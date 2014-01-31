@@ -1,0 +1,8 @@
+<h3><%= "#{@commit.sha} errors" %></h3>
+<ul>
+  <% @commit.error_lines.each do |error_line| %>
+    <li>
+      <%= "Line number: #{error_line.line_number} #{error_line.description}" %>  
+    </li>
+  <% end %>
+</ul>

@@ -1,9 +1,8 @@
-class Commit
-  attr_accessor :id, :url
+class Commit < ActiveRecord::Base
+  has_many :error_lines
+  validates :sha, uniqueness: true
 
-  def initialize(params)
-    @id = params["id"]
-    @url = params["url"]
+  def to_param
+    sha
   end
-
 end

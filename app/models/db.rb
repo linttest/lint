@@ -8,4 +8,8 @@ class Db
     User.create!(attributes)
   end
 
+  def find_commit(sha)
+    Commit.find_by(sha: sha)
+  end
+
 end
