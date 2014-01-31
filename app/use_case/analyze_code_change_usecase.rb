@@ -2,7 +2,7 @@ class AnalyzeCodeChangeUsecase
 
   attr_reader :payload, :analyzer, :github_adapter
 
-  def initialize(payload, analyzer, github_adapter)
+  def initialize(payload, analyzer = Analyzer::AlwaysPass.new, github_adapter = Github::Adapter.new)
     @payload        = payload
     @analyzer       = analyzer
     @github_adapter = github_adapter
