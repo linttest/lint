@@ -18,6 +18,7 @@ class AuthenticateWithGithubUsecase
       email:      auth.info.email,
       password:   Devise.friendly_token.first(20),
       name:       auth.info.name,
+      nickname:   auth.info.nickname,
       avatar_url: auth.info.image
     )
   end

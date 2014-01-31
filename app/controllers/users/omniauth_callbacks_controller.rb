@@ -9,4 +9,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to home_path, :error => "Sorry cannot authenticate"
     end
   end
+
+  private
+
+  def after_sign_in_path_for(user)
+    repositories_path
+  end
 end
