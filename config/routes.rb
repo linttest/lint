@@ -3,4 +3,6 @@ Lint::Application.routes.draw do
   root to: "home#index"
   resources :repositories, only: [:index]
   resources :commits, only: [:show]
+  
+  post '/git_statuses/process_commit', to: 'git_statuses#process_commit'
 end
