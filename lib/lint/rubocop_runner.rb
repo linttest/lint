@@ -1,13 +1,13 @@
 require 'rubocop'
+require 'tempfile'
 
 module Lint
   class RubocopRunner
-    attr_reader :config, :patch, :repository
+    attr_reader :config, :content
 
-    def initialize(repository, patch)
-      @config     = Rubocop::ConfigStore.new
-      @patch      = patch
-      @repository = repository
+    def initialize(content)
+      @config  = Rubocop::ConfigStore.new
+      @content = content
     end
 
     def offences
@@ -19,8 +19,14 @@ module Lint
     end
 
     def full_path
-      path = Pathname.new(repository.path).parent
-      path.join(patch.delta.new_file[:path])
+      @full_path ||= file.path
+    end
+
+    def file
+      @file ||= Tempfile.new('code').tap do |file|
+        file.write(content)
+        file.close
+      end
     end
   end
 end

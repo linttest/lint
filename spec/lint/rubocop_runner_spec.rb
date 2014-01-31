@@ -2,22 +2,18 @@ require 'spec_helper'
 
 describe Lint::RubocopRunner do
   fake(:config_store)
-  fake(:delta)      { Rugged::Diff::Delta }
-  fake(:patch)      { Rugged::Diff::Patch }
-  fake(:repository) { Rugged::Repository }
 
   let(:file_inspector) { fake() }
+  let(:content)        { "content" }
 
-  before do
-    mock(patch).delta     { delta }
-    mock(delta).new_file  { { :path => "lib/path.rb" } }
-    mock(repository).path { "/home/lint/repository/.git/" }
-  end
-
-  subject { described_class.new(repository, patch) }
+  subject { described_class.new(content) }
 
   it "returns full path of patch" do
-    subject.full_path.should == Pathname.new("/home/lint/repository/lib/path.rb")
+    subject.full_path.should == subject.file.path
+  end
+
+  it "file shold have content given in constructor" do
+    File.open(subject.full_path).read.should == content
   end
 
   describe "inspector" do
