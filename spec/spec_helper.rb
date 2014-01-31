@@ -40,4 +40,11 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.mock_with Bogus::RSpecAdapter
+end
+
+Bogus.configure do |c|
+  c.search_modules << Lint
+  c.search_modules << Octokit
 end
