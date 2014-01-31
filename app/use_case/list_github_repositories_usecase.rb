@@ -1,14 +1,14 @@
 class ListGithubRepositoriesUsecase
 
-  attr_reader :user, :repository_db, :repositories
+  attr_reader :user, :github_adapter, :repositories
 
-  def initialize(user, repository_db = Github::Repository.new)
-    @user          = user
-    @repository_db = repository_db
+  def initialize(user, github_adapter = Github::Adapter.new)
+    @user           = user
+    @github_adapter = github_adapter
   end
 
   def execute
-    @repositories = repository_db.for_user(user.nickname)
+    @repositories = github_adapter.get_user_repositories(user.nickname)
   end
 
 end
