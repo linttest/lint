@@ -11,7 +11,7 @@ class PayLoad
 
   def commits
     @hook_hash["commits"].map do |commit_hash|
-      Commit.new(commit_hash)
+      PayLoadCommit.new(commit_hash)
     end
   end
 

@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe Commit do 
   
-  describe "Commit" do
+  describe "PayLoadCommit" do
     let(:sample_json_file) { IO.read(File.join(Rails.root, 'spec','sample_payload.json'))  }
     let(:parsed_commits) { JSON.parse(sample_json_file)["commits"] }
 
     describe "initialize method" do
-      let(:commit) { Commit.new(parsed_commits.first) }
+      let(:commit) { PayLoadCommit.new(parsed_commits.first) }
 
       it "requires one parameter" do
-        expect { Commit.new }.to raise_error(ArgumentError)
+        expect { PayLoadCommit.new }.to raise_error(ArgumentError)
       end
 
       it "creates a new instance" do
