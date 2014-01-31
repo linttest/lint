@@ -8,6 +8,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jbuilder', '~> 1.2'
 gem 'debugger', group: [:development, :test]
 
+gem 'devise'
+gem 'omniauth-github'
+
 group :test do
-  gem 'rspec-rails'
+  gem 'bogus'
+  gem 'rspec-rails', '~> 3.0.0.beta'
 end

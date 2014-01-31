@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <h1>Hello <%= current_user.name %></h1>
+  <%= image_tag current_user.avatar_url %>
+<% else %>
+  <%= link_to "Authenticate with github", user_omniauth_authorize_path(:github) %>
+<% end %>
