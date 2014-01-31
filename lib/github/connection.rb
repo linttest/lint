@@ -21,5 +21,6 @@ module Github
       connection.pull_request(repository_slug, pull_request_id)
     end
 
+    delegate :statuses, :to => :connection
   end
 end
