@@ -1,0 +1,7 @@
+<h1>Your respositories</h1>
+
+<ul>
+  <% @repositories.each do |repository| %>
+    <li><%= repository.name %></li>
+  <% end %>
+</ul>

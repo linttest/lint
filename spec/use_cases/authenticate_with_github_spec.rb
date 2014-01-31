@@ -9,9 +9,10 @@ describe AuthenticateWithGithubUsecase do
     :provider => "github",
     :uid      => "abc123",
     :info     => OpenStruct.new(
-                  :email => "bob@example.com",
-                  :name  =>  "bob",
-                  :image => "http://img.com/bob"
+                  :email    => "bob@example.com",
+                  :name     => "bob",
+                  :nickname => "bobdeveloper",
+                  :image    => "http://img.com/bob"
                  )
   ) }
 
@@ -26,6 +27,7 @@ describe AuthenticateWithGithubUsecase do
         :email    => "bob@example.com",
         :password => "secret",
         :name     => "bob",
+        :nickname => "bobdeveloper",
         :avatar_url => "http://img.com/bob"
       )
     end
