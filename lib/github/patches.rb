@@ -1,6 +1,6 @@
 require 'rugged'
 
-module Lint
+module Github
   class Patches
     attr_reader :repository, :pull_request
 

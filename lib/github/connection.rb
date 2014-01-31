@@ -17,5 +17,9 @@ module Github
       connection.user(username)
     end
 
+    def get_pull_request(repository_slug, pull_request_id)
+      connection.pull_request(repository_slug, pull_request_id)
+    end
+
   end
 end

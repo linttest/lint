@@ -1,17 +1,12 @@
-require 'octokit'
-
-module Lint
+module Github
   class PullRequest
 
-    attr_reader :repository_slug, :pull_request_id
+    attr_reader :repository_slug, :pull_request_id, :connection
 
-    def initialize(repository_slug, pull_request_id)
+    def initialize(repository_slug, pull_request_id, connection = Connection.new)
       @repository_slug = repository_slug
       @pull_request_id = pull_request_id
-    end
-
-    def client
-      @client ||= Octokit::Client.new
+      @connection      = connection
     end
 
     def base_sha
@@ -23,7 +18,7 @@ module Lint
     end
 
     def pull_request
-      @pull_request ||= client.pull_request(repository_slug, pull_request_id)
+      @pull_request ||= connection.get_pull_request(repository_slug, pull_request_id)
     end
 
   end

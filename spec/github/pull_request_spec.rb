@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Lint::PullRequest do
-  fake(:client)
+describe Github::PullRequest do
+  fake(:connection) { Github::Connection }
 
   let(:pull_request)    { fake( :base => fake(:sha => base_sha), :head => fake(:sha => target_sha)) }
   let(:repository_slug) { "x8/lint" }
@@ -10,11 +10,10 @@ describe Lint::PullRequest do
   let(:target_sha)      { "113c4f41f7bc8f34ec75d47c8c4d59a29baedb59" }
 
   before do
-    stub(subject).client { client }
-    stub(client).pull_request(repository_slug, pull_request_id) { pull_request }
+    stub(connection).get_pull_request(repository_slug, pull_request_id) { pull_request }
   end
 
-  subject { described_class.new(repository_slug, pull_request_id) }
+  subject { described_class.new(repository_slug, pull_request_id, connection) }
 
   it "have access to repository_slug" do
     subject.repository_slug.should == repository_slug

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Lint::Patches do
+describe Github::Patches do
   fake(:repository) { Rugged::Repository }
   fake(:delta)      { Rugged::Diff::Delta }
   fake(:patch)      { Rugged::Diff::Patch }
@@ -8,7 +8,7 @@ describe Lint::Patches do
   let(:repository_path) { "." }
   let(:base_sha)        { "6d15d9441e3cdd2315f883756f92e19538f0cdab" }
   let(:target_sha)      { "113c4f41f7bc8f34ec75d47c8c4d59a29baedb59" }
-  let(:pull_request)    { fake(:pull_request, :base_sha => base_sha, :target_sha => target_sha) }
+  let(:pull_request)    { fake(Github::PullRequest, :base_sha => base_sha, :target_sha => target_sha) }
   let(:patches)         { [patch] }
   let(:new_file)        { { :path => "lib/lint/patches.rb"} }
 
