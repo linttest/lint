@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: lint
+  password:
+
+development:
+  <<: *common
+  database: lint_development
+test:
+  <<: *common
+  database: lint_test
+production:
+  <<: *common
+  database: lint_production
