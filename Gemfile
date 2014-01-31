@@ -10,6 +10,7 @@ gem 'debugger', group: [:development, :test]
 
 gem 'octokit'
 gem 'rugged'
+gem 'rubocop'
 gem 'devise'
 gem 'omniauth-github'
 

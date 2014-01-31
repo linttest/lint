@@ -47,4 +47,5 @@ end
 Bogus.configure do |c|
   c.search_modules << Lint
   c.search_modules << Octokit
+  c.search_modules << Rubocop
 end

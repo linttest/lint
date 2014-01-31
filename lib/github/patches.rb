@@ -14,8 +14,7 @@ module Github
     end
 
     def files
-      @files ||= patches.map    { |path| path.delta.new_file[:path] }.
-                         select { |path| ruby_file?(path) }
+      @files ||= patches.map { |path| path.delta.new_file[:path] }.select { |path| ruby_file?(path) }
     end
 
     private
