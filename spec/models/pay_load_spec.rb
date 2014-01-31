@@ -3,9 +3,8 @@ require 'spec_helper'
 describe PayLoad do 
   
   describe "PayLoad" do
-    let(:sample_json_file) { IO.read(File.join(Rails.root, 'spec','sample_payload.json')) }
-    let(:parsed_json) { JSON.parse(sample_json_file) }
-    let(:pay_load) { PayLoad.new(parsed_json) }
+    let(:sample_json_file)  { IO.read(File.join(Rails.root, 'spec','sample_payload.json')) }
+    let(:pay_load)          { PayLoad.new(sample_json_file) }
 
     describe "initialize method" do
       it "initializes four instance variables" do
@@ -33,7 +32,7 @@ describe PayLoad do
 
       it "returns array of Commit instances" do
         pay_load.commits.each do |element|
-          element.should be_an_instance_of Commit
+          element.should be_an_instance_of PayLoadCommit
         end
       end
     end
